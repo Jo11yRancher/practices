@@ -11,15 +11,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RequiredArgsConstructor
 public class ProductController {
     private final ProductService productService;
-    @GetMapping("/")
+    @GetMapping("/yuschenko")
 
     public String products(Model model){
         model.addAttribute("productList", productService.getProductList());
         return "products";
     }
-    @GetMapping("/yuschenko")
+    @GetMapping("/")
     public String returnIndex(Model model){
         model.addAttribute("productList", productService.getProductList());
         return "index";
+    }
+    @GetMapping("/product/{id}")
+    private String productInfo(Long id, Model model){
+        model.addAttribute("product", productService.getProductById(id));
+        return "product-info";
     }
 }

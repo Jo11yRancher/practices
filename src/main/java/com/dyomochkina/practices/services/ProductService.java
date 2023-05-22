@@ -19,4 +19,19 @@ public class ProductService {
     public List<Product> getProductList() {
         return productList;
     }
+    public void saveProduct(Product product){
+        product.setId(++ID);
+        productList.add(product);
+    }
+    public void deleteProduct(Long id){
+        productList.removeIf(product -> product.getId().equals(id));
+    }
+
+    public Object getProductById(Long id) {
+        for (Product product:productList) {
+            if (product.getId().equals(id))
+                return product;
+        }
+        return null;
+    }
 }
