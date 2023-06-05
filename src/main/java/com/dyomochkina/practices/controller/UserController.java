@@ -16,11 +16,11 @@ public class UserController {
     public String login(){
         return "login";
     }
-    @GetMapping("/registrstion")
-    public String registrstion(){
+    @GetMapping("/registration")
+    public String registastion(){
         return "registration";
     }
-    @PostMapping("/registrstion")
+    @PostMapping("/registration")
     public String createUser(User user){
         userService.createUser(user);
         return "redirect:/login";
