@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link style="">
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -16,8 +17,7 @@
     <b>Ціна: </b> [[${product.price}]] <b> грн. </b> <br>
     <b>Стан товару: </b> [[${product.description}]] <br>
     <b>Місто продажу: </b> [[${product.town}]] <br>
-    <b>Продавець: </b> [[${product.user.name}]] <br>
-
+    <b>Продавець: </b> <a th:href="@{/user/{id}(id=${product.user.id})}">[[${product.user.name}]]</a> <br>
     <div th:if="${user.email}">
         <form th:action="@{/product/delete/{id}(id=${product.id})}" method="post">
             <input type="submit" value="Видалити товар">

@@ -20,11 +20,12 @@
         Пошук товару по назві: <input type="text" name="title">
         <input type="submit" value="Пошук">
     </form>
-
+    <hr>
+<!--Якщо список товарів відсутній-->
     <div th:if="${productList.isEmpty}">
         <div>Товар відсутній</div>
     </div>
-
+<!--Якщо список товарів НЕ відсутній-->
     <div th:unless="${productList.isEmpty}">
         <div th:each="product : ${productList}">
             <span th:text="${product.title}"></span>
@@ -32,9 +33,8 @@
             <a th:href="@{/product/{id}(id=${product.id})}">Детальніше...</a>
         </div>
     </div>
-
     <br><hr>
-
+<!--Створення форми для нового товару-->
     <div th:if="${user.email}">
         <form th:action="@{/product/create}" method="post" enctype="multipart/form-data">
             Назва товару: <input type="text" name="title"><br><br>
