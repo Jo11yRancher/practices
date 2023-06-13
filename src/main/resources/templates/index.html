@@ -16,6 +16,9 @@
         <a href="/login"> Увійти </a>
     </div>
     <hr>
+    <div th:if="${user.isAdmin}">
+        <a href="/admin">Панель адміністратора</a>
+    </div>
     <form th:action="@{/}" method="get">
         Пошук товару по назві: <input type="text" name="title">
         <input type="submit" value="Пошук">

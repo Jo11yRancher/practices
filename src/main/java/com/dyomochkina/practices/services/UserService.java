@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -22,5 +24,17 @@ public class UserService {
         userRepository.save(user);
 
         return true;
+    }
+
+    public List<User> list() {
+        return userRepository.findAll();
+    }
+
+    public void banUser(Long id){
+        User user = userRepository.findById(id).orElse(null);
+        if (user != null){
+            user.setActive(!user.isAdmin());
+        }
+        userRepository.save(user);
     }
 }
